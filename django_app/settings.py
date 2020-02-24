@@ -31,9 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'rest_framework',
+    'rest_framework',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'map.apps.MapConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -146,3 +147,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 #         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #     ]
 # }
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
