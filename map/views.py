@@ -23,8 +23,8 @@ def index(request):
 def location(request):
     lat = GPS.objects.latest('created_at').lat
     long = GPS.objects.latest('created_at').long
-    created = GPS.objects.latest('created_at').created_at.strftime('%Y-%m-%d')
-    updated = GPS.objects.latest('created_at').updated_at.strftime('%Y-%m-%d')
+    created = GPS.objects.latest('created_at').created_at.strftime('%Y-%m-%d %H:%M:%S')
+    updated = GPS.objects.latest('created_at').updated_at.strftime('%Y-%m-%d %H:%M:%S')
 
     f = open("../../.creds/google_maps_api.txt", "r")
     google_key = str(f.read().strip())

@@ -43,8 +43,8 @@
 
         function createInfoWindowContent(latLng, zoom) {
           var scale = 1 << zoom;
-          var created = Date.parse({{created}})
-          var updated = Date.parse({{updated}})
+          var created = "{{created}}"
+          var updated = "{{updated}}"
 
           return [
             'Last Recorded Latitude, Longitude: ' + latLng,
