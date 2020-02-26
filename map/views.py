@@ -5,7 +5,9 @@ from django.http import HttpResponse
 from .models import GPS
 from rest_framework import viewsets
 from .serializers import GPSSerializer
-import pandas as pd
+
+f = open("../../.creds/google_maps_api.txt", "r")
+google_key = f.read().replace(" ", "")
 
 
 def index(request):
@@ -24,7 +26,8 @@ def location(request):
     created = GPS.objects.latest('created_at').created_at.strftime('%Y-%m-%d')
     updated = GPS.objects.latest('created_at').updated_at.strftime('%Y-%m-%d')
 
-    google_key = pd.read_csv('~/.creds/google_maps_api.csv').columns[0]
+    f = open("../../.creds/google_maps_api.txt", "r")
+    google_key = str(f.read().strip())
 
     return render(request, 'map/location.html', {'title': 'Current location', 'latitude': lat,'longitude': long, 'created': created, 'updated': updated, 'key': google_key})
 
